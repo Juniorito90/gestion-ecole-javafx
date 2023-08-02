@@ -9,65 +9,49 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
-public class EtudiantController {
+public class ClasseController {
 
     @FXML
     private Button AjouterBtn;
 
     @FXML
-    private Button ClasseMenu;
+    private Button EtudiantMenu;
 
     @FXML
-    private TableColumn<?, ?> EmailCol;
+    private TableColumn<Classe, Integer> IDCol;
 
     @FXML
-    private TableColumn<?, ?> IDCol;
-
-    @FXML
-    private TableColumn<?, ?> LoginCol;
-
-    @FXML
-    private TableColumn<?, ?> NomCol;
-
-    @FXML
-    private TableColumn<?, ?> PasswordCol;
-
-    @FXML
-    private TableColumn<?, ?> PrenomCol;
+    private TableColumn<Classe, String> LibelleCol;
 
     @FXML
     private Button StatistiqueMenu;
 
     @FXML
-    private TableColumn<?, ?> TelephoneCol;
-
-    @FXML
-    private Button extraireBtn;
-
-    @FXML
     private Button refreshBtn;
 
     @FXML
-    private TableView<?> tbViewEtudiant;
+    private TableView<Classe> tbViewClasse;
 
     @FXML
-    void openAddEtudiantFn(ActionEvent event) {
+    void openAddClasseFn(ActionEvent event) {
         Stage primaryStage = new Stage();
 
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("AddEtudiant.fxml"));
+            root = FXMLLoader.load(getClass().getResource("AddClasse.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.centerOnScreen();
             primaryStage.initModality(Modality.APPLICATION_MODAL);
             primaryStage.setResizable(false);
-            primaryStage.setTitle("Ajouter un Etudiant");
+            primaryStage.setTitle("Ajouter une Classe");
             primaryStage.show();
 
         } catch (IOException e) {
@@ -76,18 +60,18 @@ public class EtudiantController {
     }
 
     @FXML
-    void openClasseFn(ActionEvent event) {
+    void openEtudiantFn(ActionEvent event) {
         Stage primaryStage = new Stage();
 
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("Classe.fxml"));
+            root = FXMLLoader.load(getClass().getResource("Etudiant.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.centerOnScreen();
             primaryStage.initModality(Modality.APPLICATION_MODAL);
             primaryStage.setResizable(false);
-            primaryStage.setTitle("Classes");
+            primaryStage.setTitle("Etudiants");
             // Obtenez la fenêtre actuelle (la fenêtre de connexion)
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             // Fermez la fenêtre actuelle lors de l'ouverture de la fenêtre d'inscription
@@ -100,18 +84,26 @@ public class EtudiantController {
     }
 
     @FXML
-    void openExtraireFn(ActionEvent event) {
-
-    }
-
-    @FXML
     void openStatistiqueFn(ActionEvent event) {
 
     }
 
+    private ClasseImpl classeImpl = new ClasseImpl();
     @FXML
     void refreshTable(ActionEvent event) {
-
+        // Rafraîchir la liste des classes après l'ajout d'un nouvel étudiant
+        List<Classe> classeList = classeImpl.list();
+        tbViewClasse.getItems().setAll(classeList);
     }
 
+
+    @FXML
+    void initialize(){
+        IDCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        LibelleCol.setCellValueFactory(new PropertyValueFactory<>("libelle"));
+
+        List<Classe> classeList = classeImpl.list();
+        tbViewClasse.getItems().setAll(classeList);
+
+    }
 }

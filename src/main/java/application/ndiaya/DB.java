@@ -35,7 +35,11 @@ public class DB {
     public PreparedStatement toInsUpdDel(String sql) throws SQLException {
         return this.getConnection().prepareStatement(sql);
     }
-    public PreparedStatement toSelect(String sql,int type1,int type2) throws SQLException {
+
+    public PreparedStatement toSelect(String sql) throws SQLException {
+        return this.getConnection().prepareStatement(sql);
+    }
+    public PreparedStatement Select(String sql,int type1,int type2) throws SQLException {
         return this.getConnection().prepareStatement(sql,type1,type2);
     }
 }

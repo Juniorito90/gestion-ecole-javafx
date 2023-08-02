@@ -53,7 +53,7 @@ public class UserImpl implements IUser{
     @Override
     public boolean login(User user) {
         try {
-            preparedStatement=this.db.toSelect("SELECT * FROM user WHERE login=? AND password=?", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            preparedStatement=this.db.Select("SELECT * FROM user WHERE login=? AND password=?", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             preparedStatement.setString(1, user.getLogin());
             preparedStatement.setString(2, user.getPassword());
             resultSet=preparedStatement.executeQuery();
@@ -69,7 +69,7 @@ public class UserImpl implements IUser{
     public boolean login(String login, String password) {
         // TODO Auto-generated method stub
         try {
-            preparedStatement=this.db.toSelect("SELECT * FROM user WHERE login=? AND password=?", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            preparedStatement=this.db.Select("SELECT * FROM user WHERE login=? AND password=?", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
             preparedStatement.setString(1, login);
             preparedStatement.setString(2, password);
             resultSet=preparedStatement.executeQuery();

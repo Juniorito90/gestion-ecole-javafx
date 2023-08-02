@@ -43,11 +43,6 @@ public class MainController {
             alert.show();
         }else{
             if(rs) {
-                alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setContentText("Bienvenue Utilisateur : "+login);
-                alert.setHeaderText("Connexion réussie");
-                alert.setResizable(false);
-                alert.show();
 
                 Stage primaryStage = new Stage();
 
@@ -69,6 +64,12 @@ public class MainController {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Bienvenue Utilisateur : "+login);
+                alert.setHeaderText("Connexion réussie");
+                alert.setResizable(false);
+                alert.show();
 
             }else {
                 alert = new Alert(Alert.AlertType.ERROR);
