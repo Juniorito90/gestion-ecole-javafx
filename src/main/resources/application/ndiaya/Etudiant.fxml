@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="444.0" prefWidth="1055.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ndiaya.EtudiantController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="444.0" prefWidth="761.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ndiaya.EtudiantController">
     <top>
         <AnchorPane prefHeight="53.0" prefWidth="600.0" BorderPane.alignment="CENTER">
             <children>
@@ -17,9 +17,9 @@
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </Label>
-                <Button fx:id="AjouterBtn" layoutX="954.0" layoutY="13.0" mnemonicParsing="false" onAction="#openAddEtudiantFn" prefHeight="28.0" prefWidth="86.0" text="Ajouter" />
-                <Button fx:id="refreshBtn" layoutX="869.0" layoutY="13.0" mnemonicParsing="false" onAction="#refreshTable" prefHeight="28.0" prefWidth="78.0" text="Rafraichir" />
-            <Button fx:id="extraireBtn" layoutX="783.0" layoutY="14.0" mnemonicParsing="false" onAction="#openExtraireFn" prefHeight="28.0" prefWidth="78.0" text="Extraire" />
+                <Button fx:id="AjouterBtn" layoutX="664.0" layoutY="12.0" mnemonicParsing="false" onAction="#openAddEtudiantFn" prefHeight="28.0" prefWidth="86.0" text="Ajouter" />
+                <Button fx:id="refreshBtn" layoutX="579.0" layoutY="12.0" mnemonicParsing="false" onAction="#refreshTable" prefHeight="28.0" prefWidth="78.0" text="Rafraichir" />
+            <Button fx:id="extraireBtn" layoutX="493.0" layoutY="13.0" mnemonicParsing="false" onAction="#openExtraireFn" prefHeight="28.0" prefWidth="78.0" text="Extraire" />
             </children>
         </AnchorPane>
     </top>
@@ -27,12 +27,10 @@
         <TableView fx:id="tbViewEtudiant" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <columns>
                 <TableColumn fx:id="IDCol" prefWidth="57.600006103515625" text="ID" />
-                <TableColumn fx:id="NomCol" prefWidth="147.20000839233398" text="Nom" />
-                <TableColumn fx:id="PrenomCol" prefWidth="192.8000030517578" text="Prenom" />
-                <TableColumn fx:id="TelephoneCol" prefWidth="149.5999755859375" text="Telephone" />
-                <TableColumn fx:id="EmailCol" prefWidth="208.0" text="Email" />
-                <TableColumn fx:id="LoginCol" prefWidth="151.199951171875" text="Login" />
-                <TableColumn fx:id="PasswordCol" prefWidth="151.199951171875" text="Password" />
+                <TableColumn fx:id="NomCol" prefWidth="135.20000839233398" text="Nom" />
+                <TableColumn fx:id="PrenomCol" prefWidth="200.0000762939453" text="Prenom" />
+                <TableColumn fx:id="AdresseCol" prefWidth="260.7999267578125" text="Adresse" />
+                <TableColumn fx:id="ClasseCol" prefWidth="104.0" text="Classe" />
             </columns>
         </TableView>
     </center>

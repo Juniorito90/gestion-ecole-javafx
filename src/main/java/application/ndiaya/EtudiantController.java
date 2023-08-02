@@ -9,10 +9,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 public class EtudiantController {
 
@@ -23,28 +25,22 @@ public class EtudiantController {
     private Button ClasseMenu;
 
     @FXML
-    private TableColumn<?, ?> EmailCol;
+    private TableColumn<Classe, Integer> IDCol;
 
     @FXML
-    private TableColumn<?, ?> IDCol;
+    private TableColumn<Classe, String> NomCol;
 
     @FXML
-    private TableColumn<?, ?> LoginCol;
+    private TableColumn<Classe, String> PrenomCol;
 
     @FXML
-    private TableColumn<?, ?> NomCol;
+    private TableColumn<Classe, String> AdresseCol;
 
     @FXML
-    private TableColumn<?, ?> PasswordCol;
-
-    @FXML
-    private TableColumn<?, ?> PrenomCol;
+    private TableColumn<Classe, Integer> ClasseCol;
 
     @FXML
     private Button StatistiqueMenu;
-
-    @FXML
-    private TableColumn<?, ?> TelephoneCol;
 
     @FXML
     private Button extraireBtn;
@@ -53,7 +49,7 @@ public class EtudiantController {
     private Button refreshBtn;
 
     @FXML
-    private TableView<?> tbViewEtudiant;
+    private TableView<Etudiant> tbViewEtudiant;
 
     @FXML
     void openAddEtudiantFn(ActionEvent event) {
@@ -109,9 +105,24 @@ public class EtudiantController {
 
     }
 
+    private EtudiantImpl etudiantImpl = new EtudiantImpl();
     @FXML
     void refreshTable(ActionEvent event) {
+        // Rafraîchir la liste des classes après l'ajout d'un nouvel étudiant
+        List<Etudiant> etudiantList = etudiantImpl.list();
+        tbViewEtudiant.getItems().setAll(etudiantList);
+    }
 
+    @FXML
+    void initialize(){
+        IDCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        NomCol.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        PrenomCol.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+        AdresseCol.setCellValueFactory(new PropertyValueFactory<>("adresse"));
+        ClasseCol.setCellValueFactory(new PropertyValueFactory<>("idClasse"));
+
+        List<Etudiant> etudiantList = etudiantImpl.list();
+        tbViewEtudiant.getItems().setAll(etudiantList);
     }
 
 }

@@ -26,4 +26,9 @@ public class Classe {
     public void setLibelle(String libelle) {
         this.libelle = libelle;
     }
+
+    @Override
+    public String toString() {
+        return libelle; // Retourner le libellé de la classe comme représentation textuelle
+    }
 }

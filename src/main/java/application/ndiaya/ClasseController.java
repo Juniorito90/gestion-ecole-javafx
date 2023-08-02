@@ -91,7 +91,7 @@ public class ClasseController {
     private ClasseImpl classeImpl = new ClasseImpl();
     @FXML
     void refreshTable(ActionEvent event) {
-        // Rafraîchir la liste des classes après l'ajout d'un nouvel étudiant
+        // Rafraîchir la liste des classes après l'ajout d'un nouvelle classe
         List<Classe> classeList = classeImpl.list();
         tbViewClasse.getItems().setAll(classeList);
     }
