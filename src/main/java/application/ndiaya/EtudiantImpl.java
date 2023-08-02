@@ -69,4 +69,26 @@ public class EtudiantImpl implements IEtudiant{
         }
         return etudiantList;
     }
+
+    @Override
+    public List<ChartPattern> getNbEtudiantsParClasse() {
+        List<ChartPattern> listEtudiants = new ArrayList<>();
+        try {
+            preparedStatement = this.db.toSelect("SELECT c.libelle AS classe_libelle, COUNT(e.id) AS nombre_etudiants\n" +
+                    "FROM Classe c\n" +
+                    "LEFT JOIN Etudiant e ON c.id = e.idClasse\n" +
+                    "GROUP BY c.libelle;\n");
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                listEtudiants.add(new ChartPattern(resultSet.getString("classe_libelle"),
+                            Double.parseDouble(String.valueOf(resultSet.getInt("nombre_etudiants")))
+                        ));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listEtudiants;
+    }
 }

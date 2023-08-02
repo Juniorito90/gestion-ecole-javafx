@@ -102,7 +102,26 @@ public class EtudiantController {
 
     @FXML
     void openStatistiqueFn(ActionEvent event) {
+        Stage primaryStage = new Stage();
 
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("Statistique.fxml"));
+            Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+            primaryStage.centerOnScreen();
+            primaryStage.initModality(Modality.APPLICATION_MODAL);
+            primaryStage.setResizable(false);
+            primaryStage.setTitle("Statistiques");
+            // Obtenez la fenêtre actuelle (la fenêtre de connexion)
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            // Fermez la fenêtre actuelle lors de l'ouverture de la fenêtre d'inscription
+            primaryStage.setOnShown(e -> currentStage.close());
+            primaryStage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private EtudiantImpl etudiantImpl = new EtudiantImpl();
