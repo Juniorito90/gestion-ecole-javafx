@@ -7,12 +7,16 @@ public class Etudiant {
     private String adresse;
     private int idClasse;
 
-    public Etudiant(int id, String nom, String prenom, String adresse, int idClasse) {
+    // Attribut pour stocker la classe associée à l'étudiant
+    private Classe classe;
+
+    public Etudiant(int id, String nom, String prenom, String adresse, int idClasse, Classe classe) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.adresse = adresse;
         this.idClasse = idClasse;
+        this.classe = classe;
     }
 
     public Etudiant() {
@@ -56,5 +60,13 @@ public class Etudiant {
 
     public void setIdClasse(int idClasse) {
         this.idClasse = idClasse;
+    }
+
+    public Classe getClasse() {
+        return classe;
+    }
+
+    public void setClasse(Classe classe) {
+        this.classe = classe;
     }
 }

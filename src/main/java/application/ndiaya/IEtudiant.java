@@ -1,7 +1,6 @@
 package application.ndiaya;
 
 import java.util.List;
-import application.ndiaya.ChartPattern;
 
 public interface IEtudiant {
     public boolean add(Etudiant etudiant);

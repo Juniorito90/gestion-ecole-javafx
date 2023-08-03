@@ -6,15 +6,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class EtudiantController {
 
@@ -47,6 +46,9 @@ public class EtudiantController {
 
     @FXML
     private Button refreshBtn;
+
+    @FXML
+    private TextField EtudiantInput;
 
     @FXML
     private TableView<Etudiant> tbViewEtudiant;
@@ -97,7 +99,22 @@ public class EtudiantController {
 
     @FXML
     void openExtraireFn(ActionEvent event) {
+        Stage primaryStage = new Stage();
 
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("Extraction.fxml"));
+            Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+            primaryStage.centerOnScreen();
+            primaryStage.initModality(Modality.APPLICATION_MODAL);
+            primaryStage.setResizable(false);
+            primaryStage.setTitle("Extraction");
+            primaryStage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -130,6 +147,26 @@ public class EtudiantController {
         // Rafraîchir la liste des classes après l'ajout d'un nouvel étudiant
         List<Etudiant> etudiantList = etudiantImpl.list();
         tbViewEtudiant.getItems().setAll(etudiantList);
+    }
+
+    @FXML
+    void onSearch(ActionEvent event) {
+        Alert alert;
+        if(EtudiantInput.getText().isEmpty()){
+            alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("Veuillez saisir un Etudiant!");
+            alert.setResizable(false);
+            alert.show();
+        }else{
+            List<Etudiant> etudiantList = etudiantImpl.list();
+            List<Etudiant> tempE = etudiantList.stream().filter(x->x.getNom().startsWith(EtudiantInput.getText())
+                    || x.getPrenom().startsWith(EtudiantInput.getText())
+                    || x.getAdresse().startsWith(EtudiantInput.getText()))
+                    .collect(Collectors.toList());
+
+            tbViewEtudiant.getItems().clear();
+            tbViewEtudiant.getItems().addAll(tempE);
+        }
     }
 
     @FXML

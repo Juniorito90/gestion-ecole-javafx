@@ -15,6 +15,9 @@ public class AddClasseController {
     @FXML
     private TextField libelleTxt;
 
+    private Classe classe;
+    boolean state = true; //true = Ajout / false = Modification
+
     @FXML
     void onAdd(ActionEvent event) {
         String libelle = libelleTxt.getText();
@@ -44,5 +47,4 @@ public class AddClasseController {
             }
         }
     }
-
 }

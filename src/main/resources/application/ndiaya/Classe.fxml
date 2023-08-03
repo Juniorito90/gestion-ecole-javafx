@@ -18,7 +18,7 @@
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </Label>
-                <Button fx:id="refreshBtn" layoutX="265.0" layoutY="13.0" mnemonicParsing="false" onAction="#refreshTable" prefHeight="28.0" prefWidth="78.0" text="Rafraichir" />
+                <Button fx:id="refreshBtn" layoutX="268.0" layoutY="13.0" mnemonicParsing="false" onAction="#refreshTable" prefHeight="28.0" prefWidth="78.0" text="Rafraichir" />
             </children>
         </AnchorPane>
     </top>

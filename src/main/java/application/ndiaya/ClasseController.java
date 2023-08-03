@@ -20,7 +20,6 @@ public class ClasseController {
 
     @FXML
     private Button AjouterBtn;
-
     @FXML
     private Button EtudiantMenu;
 
@@ -51,6 +50,7 @@ public class ClasseController {
             primaryStage.centerOnScreen();
             primaryStage.initModality(Modality.APPLICATION_MODAL);
             primaryStage.setResizable(false);
+            primaryStage.setUserData(null);
             primaryStage.setTitle("Ajouter une Classe");
             primaryStage.show();
 

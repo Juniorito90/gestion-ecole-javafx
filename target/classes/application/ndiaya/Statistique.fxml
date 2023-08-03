@@ -28,6 +28,6 @@
       </AnchorPane>
    </bottom>
    <center>
-      <PieChart fx:id="statistiqueChart" prefHeight="399.0" prefWidth="648.0" title="Nombre d'Etudiants par Classe" BorderPane.alignment="CENTER" />
+      <PieChart fx:id="statistiqueChart" prefHeight="399.0" prefWidth="648.0" title="Repartition des Etudiants par Classe" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>
