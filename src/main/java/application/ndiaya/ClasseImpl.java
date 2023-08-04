@@ -66,4 +66,45 @@ public class ClasseImpl implements IClasse{
         return classeList;
 
     }
+
+    @Override
+    public boolean edit(Classe classe) {
+        try {
+            preparedStatement = this.db.toInsUpdDel("UPDATE classe SET libelle = ? WHERE id = ?");
+            preparedStatement.setString(1, classe.getLibelle());
+            preparedStatement.setInt(2, classe.getId());
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean edit(int id, String libelle) {
+        try {
+            preparedStatement = this.db.toInsUpdDel("UPDATE classe SET libelle = ? WHERE id = ?");
+            preparedStatement.setString(1, libelle);
+            preparedStatement.setInt(2, id);
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean delete(int id) {
+        try {
+            preparedStatement = this.db.toInsUpdDel("DELETE FROM classe WHERE id = ?");
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

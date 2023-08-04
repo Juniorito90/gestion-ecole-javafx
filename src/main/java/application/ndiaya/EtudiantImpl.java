@@ -91,4 +91,53 @@ public class EtudiantImpl implements IEtudiant{
         }
         return listEtudiants;
     }
+
+    @Override
+    public boolean edit(Etudiant etudiant) {
+        try {
+            preparedStatement = this.db.toInsUpdDel("UPDATE etudiant SET nom=?, prenom=?, adresse=?, idclasse=? WHERE id=?");
+            preparedStatement.setString(1, etudiant.getNom());
+            preparedStatement.setString(2, etudiant.getPrenom());
+            preparedStatement.setString(3, etudiant.getAdresse());
+            preparedStatement.setInt(4, etudiant.getIdClasse());
+            preparedStatement.setInt(5, etudiant.getId());
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean edit(int id, String nom, String prenom, String adresse, int idClasse) {
+        try {
+            preparedStatement = this.db.toInsUpdDel("UPDATE etudiant SET nom=?, prenom=?, adresse=?, idclasse=? WHERE id=?");
+            preparedStatement.setString(1, nom);
+            preparedStatement.setString(2, prenom);
+            preparedStatement.setString(3, adresse);
+            preparedStatement.setInt(4, idClasse);
+            preparedStatement.setInt(5, id);
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean delete(int id) {
+        try {
+            preparedStatement = this.db.toInsUpdDel("DELETE FROM etudiant WHERE id=?");
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
 }

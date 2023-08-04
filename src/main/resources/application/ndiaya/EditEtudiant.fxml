@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="372.0" prefWidth="323.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ndiaya.EditEtudiantController">
+    <children>
+        <Label layoutX="67.0" layoutY="23.0" text="MODIFICATION ETUDIANT">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Label>
+        <TextField fx:id="nomTxt" layoutX="17.0" layoutY="70.0" prefHeight="38.0" prefWidth="290.0" promptText="Nom">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </TextField>
+        <TextField fx:id="prenomTxt" layoutX="17.0" layoutY="123.0" prefHeight="38.0" prefWidth="290.0" promptText="Prenom">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </TextField>
+        <TextField fx:id="adresseTxt" layoutX="17.0" layoutY="178.0" prefHeight="38.0" prefWidth="290.0" promptText="Adresse">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </TextField>
+        <ComboBox fx:id="classeCb" layoutX="15.0" layoutY="229.0" prefHeight="31.0" prefWidth="290.0" promptText="Liste des Classes" />
+        <Button fx:id="ModifierBtn" layoutX="107.0" layoutY="308.0" mnemonicParsing="false" onAction="#onEdit" prefHeight="38.0" prefWidth="106.0" text="Modifier" />
+    </children>
+</AnchorPane>

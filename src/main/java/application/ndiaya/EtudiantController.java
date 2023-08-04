@@ -13,12 +13,19 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class EtudiantController {
 
     @FXML
     private Button AjouterBtn;
+
+    @FXML
+    private Button modifierBtn;
+
+    @FXML
+    private Button supprimerBtn;
 
     @FXML
     private Button ClasseMenu;
@@ -168,6 +175,87 @@ public class EtudiantController {
             tbViewEtudiant.getItems().addAll(tempE);
         }
     }
+
+    @FXML
+    void openEditEtudiantFn(ActionEvent event) {
+        Etudiant selectedEtudiant = tbViewEtudiant.getSelectionModel().getSelectedItem();
+
+        if (selectedEtudiant == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setHeaderText("Veuillez choisir un etudiant!");
+            alert.setResizable(false);
+            alert.show();
+        } else {
+            openEditEtudiantWindow(selectedEtudiant);
+        }
+    }
+
+    private void openEditEtudiantWindow(Etudiant etudiant) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("EditEtudiant.fxml"));
+            Parent root = loader.load();
+
+            EditEtudiantController editController = loader.getController();
+            editController.setEtudiantToEdit(etudiant);
+
+            Stage stage = new Stage();
+            stage.setTitle("Modifier un étudiant");
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setResizable(false);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @FXML
+    void onDelete(ActionEvent event) {
+        Etudiant selectedEtudiant = tbViewEtudiant.getSelectionModel().getSelectedItem();
+
+        if (selectedEtudiant == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setHeaderText("Veuillez choisir un étudiant à supprimer!");
+            alert.setResizable(false);
+            alert.show();
+        } else {
+            Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmationAlert.setHeaderText("Confirmer la suppression");
+            confirmationAlert.setContentText("Êtes-vous sûr de vouloir supprimer l'étudiant sélectionné?");
+            confirmationAlert.setResizable(false);
+
+            // Personnaliser les boutons de la boîte de dialogue de confirmation
+            ButtonType confirmButton = new ButtonType("Confirmer", ButtonBar.ButtonData.OK_DONE);
+            ButtonType cancelButton = new ButtonType("Annuler", ButtonBar.ButtonData.CANCEL_CLOSE);
+            confirmationAlert.getButtonTypes().setAll(confirmButton, cancelButton);
+
+            // Afficher la boîte de dialogue de confirmation et attendre la réponse de l'utilisateur
+            Optional<ButtonType> result = confirmationAlert.showAndWait();
+
+            if (result.isPresent() && result.get() == confirmButton) {
+                // L'utilisateur a confirmé la suppression, supprimer l'étudiant de la base de données
+                boolean rs = etudiantImpl.delete(selectedEtudiant.getId());
+                if (rs) {
+                    Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                    successAlert.setHeaderText("Suppression réussie");
+                    successAlert.setResizable(false);
+                    successAlert.show();
+
+                    // Rafraîchir la liste des étudiants après la suppression
+                    List<Etudiant> etudiantList = etudiantImpl.list();
+                    tbViewEtudiant.getItems().setAll(etudiantList);
+                } else {
+                    Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                    errorAlert.setHeaderText("Erreur lors de la suppression");
+                    errorAlert.setResizable(false);
+                    errorAlert.show();
+                }
+            }
+        }
+    }
+
 
     @FXML
     void initialize(){

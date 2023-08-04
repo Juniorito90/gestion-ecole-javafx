@@ -35,6 +35,8 @@
             <children>
                 <Button fx:id="EtudiantMenu" layoutX="8.0" layoutY="8.0" mnemonicParsing="false" onAction="#openEtudiantFn" prefHeight="32.0" prefWidth="90.0" text="Etudiant" />
                 <Button fx:id="StatistiqueMenu" layoutX="107.0" layoutY="7.0" mnemonicParsing="false" onAction="#openStatistiqueFn" prefHeight="32.0" prefWidth="90.0" text="Statistique" />
+            <Button fx:id="modifierBtn" layoutX="243.0" layoutY="7.0" mnemonicParsing="false" onAction="#openEditClasseFn" prefHeight="32.0" prefWidth="90.0" text="Modifier" />
+            <Button fx:id="supprimerBtn" layoutX="339.0" layoutY="6.0" mnemonicParsing="false" onAction="#onDelete" prefHeight="32.0" prefWidth="90.0" text="Supprimer" />
             </children>
         </AnchorPane>
     </bottom>

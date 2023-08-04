@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="213.0" prefWidth="299.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ndiaya.EditClasseController">
+    <children>
+        <Label layoutX="62.0" layoutY="20.0" text="Modification Classe">
+            <font>
+                <Font name="System Bold" size="19.0" />
+            </font>
+        </Label>
+        <TextField fx:id="libelleTxt" layoutX="12.0" layoutY="66.0" prefHeight="38.0" prefWidth="274.0" promptText="Libelle" />
+        <Button fx:id="modifierBtn" layoutX="98.0" layoutY="143.0" mnemonicParsing="false" onAction="#onEdit" prefHeight="38.0" prefWidth="102.0" text="Modifier" />
+    </children>
+</AnchorPane>

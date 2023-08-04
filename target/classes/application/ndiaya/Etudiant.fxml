@@ -38,10 +38,12 @@
    <bottom>
       <AnchorPane prefHeight="45.0" prefWidth="1055.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="ClasseMenu" layoutX="15.0" layoutY="8.0" mnemonicParsing="false" onAction="#openClasseFn" prefHeight="32.0" prefWidth="90.0" text="Classe" />
-            <Button fx:id="StatistiqueMenu" layoutX="113.0" layoutY="7.0" mnemonicParsing="false" onAction="#openStatistiqueFn" prefHeight="32.0" prefWidth="90.0" text="Statistique" />
-            <TextField fx:id="EtudiantInput" layoutX="408.0" layoutY="5.0" prefHeight="36.0" prefWidth="242.0" promptText="Chercher un Etudiant" />
-            <Button fx:id="rechercherBtn" layoutX="656.0" layoutY="5.0" mnemonicParsing="false" onAction="#onSearch" prefHeight="35.0" prefWidth="90.0" text="Rechercher" />
+            <Button fx:id="ClasseMenu" layoutX="4.0" layoutY="8.0" mnemonicParsing="false" onAction="#openClasseFn" prefHeight="32.0" prefWidth="90.0" text="Classe" />
+            <Button fx:id="StatistiqueMenu" layoutX="99.0" layoutY="7.0" mnemonicParsing="false" onAction="#openStatistiqueFn" prefHeight="32.0" prefWidth="90.0" text="Statistique" />
+            <TextField fx:id="EtudiantInput" layoutX="457.0" layoutY="5.0" prefHeight="36.0" prefWidth="200.0" promptText="Chercher un Etudiant" />
+            <Button fx:id="rechercherBtn" layoutX="663.0" layoutY="5.0" mnemonicParsing="false" onAction="#onSearch" prefHeight="35.0" prefWidth="90.0" text="Rechercher" />
+            <Button fx:id="modifierBtn" layoutX="227.0" layoutY="7.0" mnemonicParsing="false" onAction="#openEditEtudiantFn" prefHeight="32.0" prefWidth="90.0" text="Modifier" />
+            <Button fx:id="supprimerBtn" layoutX="323.0" layoutY="6.0" mnemonicParsing="false" onAction="#onDelete" prefHeight="32.0" prefWidth="90.0" text="Supprimer" />
          </children>
       </AnchorPane>
    </bottom>
